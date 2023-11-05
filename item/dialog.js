@@ -5,6 +5,8 @@ export const dialogMenu =(item)=>{
     const dialog = document.querySelector('dialog');
     const form = document.querySelector('form');
     const formDiv  = document.querySelectorAll('form>div');
+    const additionalDiv = document.querySelector('.additonal');
+    const optionalDiv = document.querySelector('.optional');
     //const closeBtn = document.querySelector('.close-button');
     
     if(dialog){
@@ -32,30 +34,45 @@ export const dialogMenu =(item)=>{
 
         // dialog.removeChild(formDiv);
 
-        if(formDiv.length >0){
-            formDiv.forEach(div =>{
+        if(additionalDiv.childNodes.length >0){
+            additionalDiv.childNodes.forEach(div =>{
                 div.remove()
                 //dialog.re
             })
+
+            if(optionalDiv.childNodes.length >0){
+                optionalDiv.childNodes.forEach(div =>{
+                    div.remove()
+                    //dialog.re
+                })
+            }
         }
         //console.log(formDiv);
        
         if(item.getAdditionalServings() || item.getOptionalServings()){
             const formLabels =  document.querySelectorAll('form>label');
+            item.getAdditionalServings().forEach(name =>{
 
-            for(let i = 0; i< formLabels.length; i++){
-                if(i ===0){
-                    item.getAdditionalServings().forEach(name =>{
-                        formLabels[i].after(createLabels(name));
-                    })
-                }
+                additionalDiv.appendChild(createLabels(name, item.constructor.name, 'additional'));
+            })
 
-                else{
-                    item.getOptionalServings().forEach(name =>{
-                        formLabels[i].after(createLabels(name));
-                    })
-                }
-            }
+            item.getOptionalServings().forEach(name =>{
+                optionalDiv.appendChild(createLabels(name, item.constructor.name, 'optional'));
+            })
+
+            // for(let i = 0; i< formLabels.length; i++){
+            //     if(i ===0){
+            //         item.getAdditionalServings().forEach(name =>{
+            //             formLabels[i].after(createLabels(name, item.constructor.name));
+            //         })
+            //     }
+
+            //     else{
+            //         item.getOptionalServings().forEach(name =>{
+            //             formLabels[i].after(createLabels(name, item.constructor.name));
+            //         })
+            //     }
+            // }
             dialog.style.display = 'flex';
             dialog.showModal()
         }
@@ -89,17 +106,23 @@ export const dialogMenu =(item)=>{
         if(item.getAdditionalServings()){
             const label = document.createElement('label');
             label.textContent = 'Select Side';
+            const additional = document.createElement('div');
+            div.classList.add('additional');
             form.appendChild(label);
             for(let i=0; i< item.getAdditionalServings().length; i++){
-                form.appendChild(createLabels(item.getAdditionalServings()[i]))
+                additional.appendChild(createLabels(item.getAdditionalServings()[i], item.constructor.name, 'additional'))
             }
+            form.appendChild(additional)
             if(item.getOptionalServings()){
                 const label = document.createElement('label');
                 label.textContent = 'Select Complementary Side';
+                const optional = document.createElement('div');
+                div.classList.add('optional');
                 form.appendChild(label);
                 for(let i=0; i< item.getOptionalServings().length; i++){
-                    form.appendChild(createLabels(item.getOptionalServings()[i]));
-                }                
+                    optional.appendChild(createLabels(item.getOptionalServings()[i], item.constructor.name, 'optional'));
+                } 
+                form.appendChild(optional)               
             }            
         }
         const buttonDiv= document.createElement('div');
@@ -117,14 +140,21 @@ export const dialogMenu =(item)=>{
 
     }
 
-    function createLabels(item){
+    function createLabels(item, itemName, itemType){
         const div = document.createElement('div');
         const itemSelection = document.createElement('input');
         const itemQuantity = document.createElement('input');
         const itemLabel = document.createElement('label'); 
 
         itemQuantity.setAttribute('type', 'number');
-        itemSelection.setAttribute('type', 'checkbox');
+        if(itemName === 'Drinks'){
+            itemSelection.setAttribute('type', 'radio');
+        }
+        else{
+            itemSelection.setAttribute('type', 'checkbox');
+        }
+        
+        itemSelection.setAttribute('name', itemType)
         itemLabel.textContent = item
 
         itemLabel.addEventListener('click', ()=>{
