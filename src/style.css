@@ -1,0 +1,208 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+@font-face{
+    font-family: my-cool-font;
+    src: url(../font/obised/Obised.ttf);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+}
+
+#head{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.logo p{
+    font-size: 2.5vw;
+    font-family: my-cool-font;
+}
+.logo-img{
+    width: 7vw;
+    height: 6vw;
+}
+
+
+
+nav, .menu-nav{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content:space-between ;
+    gap: 5px;
+}
+
+
+.menu-nav{
+    width: 80%;
+    align-items: center;
+    display: none;
+   
+
+}
+
+nav button, .menu-nav-btn{
+    width: 50%;
+    margin: 10px 0;
+    padding:8px 10px ;
+    
+    font-size: 2vw;
+    border-radius: 20px;
+    border: 5px solid green;
+}
+
+.menu-nav-btn{
+    color: white;
+    border: 0;
+    font-size: 3vw;
+    border-radius: 0;
+    background: none;
+}
+
+.menu-nav-btn:hover, .tab-active{
+    border-bottom: 5px solid white;
+}
+
+
+nav button:hover, .active{
+    background-color: green;
+    color: white;
+}
+
+
+#content{
+    background-color: green;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    
+}
+
+.content-body{
+    margin: 20px auto;
+    padding: 10px;
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    display: grid;
+    grid-template-rows: repeat(auto-fit,1fr);
+    grid-template-columns: repeat(auto-fit,450px);
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 70%;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 8px;
+    font-size: 1vw;
+    border: 5px solid green;
+    border-radius: 15px;
+
+}
+
+.card button, .submit-order-btn{
+    padding: 10px 12px;
+    border-radius: 25px;
+    background-color: green;
+    color: white;
+    border: 0;
+    font-size: 1.5vw;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card p{
+    text-align: center;
+}
+
+.food-menu-img{
+    width: 80%;
+    height: 50%;
+    border-radius: 15px 0;
+}
+
+dialog{
+    width: 40%;
+    height: fit-content;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    display: none;
+}
+
+form{
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: fit-content;
+    height: 90%;
+    gap: 5px;
+}
+
+form div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    
+}
+
+form input[type= 'number']{
+    display: none;
+    width: 65px;
+    height: 15px;
+    padding: 5px;
+    text-align: center;
+    margin-left: auto;
+}
+form > label{
+    font-size: 3vw;
+    font-weight: 800;
+}
+
+.submit-order-btn{
+    font-size: 2vw;
+}
+
+.close-img{
+    width: 20px;
+    height: 20px;
+}
+
+.close-button{
+    background: none;
+}
+/* .body{
+    background-color: green;
+    flex: 1;
+} */
