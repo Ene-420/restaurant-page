@@ -20,15 +20,15 @@ export const dialogMenu =(item)=>{
     
 
     const closeDialogBtn = document.querySelector('.close-button');
+    const radioButton = document.querySelectorAll("input[name = 'additional']");
+
     
     closeDialogBtn.addEventListener('click', closeDialog);
 
-    // function showDialog(){
-        
+    radioButton.forEach((radio) =>{
+        radio.addEventListener('click', checkSelected);
 
-    //     
-       
-    // }
+    });
 
     function updateDialog(item){
 
@@ -60,19 +60,6 @@ export const dialogMenu =(item)=>{
                 optionalDiv.appendChild(createLabels(name, item.constructor.name, 'optional'));
             })
 
-            // for(let i = 0; i< formLabels.length; i++){
-            //     if(i ===0){
-            //         item.getAdditionalServings().forEach(name =>{
-            //             formLabels[i].after(createLabels(name, item.constructor.name));
-            //         })
-            //     }
-
-            //     else{
-            //         item.getOptionalServings().forEach(name =>{
-            //             formLabels[i].after(createLabels(name, item.constructor.name));
-            //         })
-            //     }
-            // }
             dialog.style.display = 'flex';
             dialog.showModal()
         }
@@ -107,7 +94,7 @@ export const dialogMenu =(item)=>{
             const label = document.createElement('label');
             label.textContent = 'Select Side';
             const additional = document.createElement('div');
-            div.classList.add('additional');
+            additional.classList.add('additional');
             form.appendChild(label);
             for(let i=0; i< item.getAdditionalServings().length; i++){
                 additional.appendChild(createLabels(item.getAdditionalServings()[i], item.constructor.name, 'additional'))
@@ -117,7 +104,7 @@ export const dialogMenu =(item)=>{
                 const label = document.createElement('label');
                 label.textContent = 'Select Complementary Side';
                 const optional = document.createElement('div');
-                div.classList.add('optional');
+                optional.classList.add('optional');
                 form.appendChild(label);
                 for(let i=0; i< item.getOptionalServings().length; i++){
                     optional.appendChild(createLabels(item.getOptionalServings()[i], item.constructor.name, 'optional'));
@@ -173,11 +160,24 @@ export const dialogMenu =(item)=>{
         
             if(itemSelection.checked){
                 itemQuantity.style.display = 'block';
+                
             }
             else{
                 itemQuantity.style.display = 'none';
             }
-        });                    
+        });   
+        
+        itemSelection.addEventListener('click',()=>{
+            if(itemSelection.checked){
+                //itemSelection.checked = false;
+                itemQuantity.style.display = 'block';
+            }
+            else{
+                //itemSelection.checked = true;
+                itemQuantity.style.display = 'none';
+            }
+        })
+        itemQuantity.setAttribute('value', '1');
         div.appendChild(itemSelection);
         div.appendChild(itemLabel);
         div.appendChild(itemQuantity);
@@ -185,4 +185,22 @@ export const dialogMenu =(item)=>{
         return div;
     }
 
+    function checkSelected(e){
+
+        radioButton.forEach((btn) =>{
+            if(btn != e.target){
+                if(!btn.checked){
+                    if(btn.nextSibling.nextSibling.style.display === 'block'){
+                        btn.nextSibling.nextSibling.style.display ='none'
+                    }
+          
+                }
+                
+            }
+        });
+    }
+
+
 }
+
+
