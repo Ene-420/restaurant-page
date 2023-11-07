@@ -5,7 +5,7 @@ export const dialogMenu =(item)=>{
     const dialog = document.querySelector('dialog');
     const form = document.querySelector('form');
     const formDiv  = document.querySelectorAll('form>div');
-    const additionalDiv = document.querySelector('.additonal');
+    const additionalDiv = document.querySelector('.additional');
     const optionalDiv = document.querySelector('.optional');
     //const closeBtn = document.querySelector('.close-button');
     
@@ -32,22 +32,15 @@ export const dialogMenu =(item)=>{
 
     function updateDialog(item){
 
-        // dialog.removeChild(formDiv);
-
-        if(additionalDiv.childNodes.length >0){
-            additionalDiv.childNodes.forEach(div =>{
-                div.remove()
-                //dialog.re
-            })
-
-            if(optionalDiv.childNodes.length >0){
-                optionalDiv.childNodes.forEach(div =>{
-                    div.remove()
-                    //dialog.re
-                })
+        if(additionalDiv.hasChildNodes()){
+            additionalDiv.replaceChildren()
+           
+            if(optionalDiv.hasChildNodes()){
+                optionalDiv.replaceChildren()
+              
             }
         }
-        //console.log(formDiv);
+        
        
         if(item.getAdditionalServings() || item.getOptionalServings()){
             const formLabels =  document.querySelectorAll('form>label');

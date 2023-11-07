@@ -131,6 +131,7 @@ nav button:hover, .active{
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+    position: relative;
 }
 
 .card{
@@ -178,6 +179,9 @@ dialog{
     align-items: center;
     justify-content: center; 
     display: none;
+    position: absolute;
+    top: 40%;
+    left: 40%;
 }
 
 
@@ -192,12 +196,17 @@ form{
     gap: 5px;
 }
 
-form div{
+
+.optional, .additional{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+}
+
+.optional div, .additional div{
     display: flex;
     align-items: center;
-    gap: 10px;
-
-    
 }
 
 form input[type= 'number']{
@@ -221,13 +230,20 @@ form> div>label{
     font-size: 2vw;
 }
 
+dialog > div{
+    margin-left: auto;
+}
+
 .close-img{
     width: 20px;
     height: 20px;
+    padding: 5px;
 }
 
 .close-button{
     background: none;
+    border: none;
+    margin-left:auto;
 }
 
 .contact{
