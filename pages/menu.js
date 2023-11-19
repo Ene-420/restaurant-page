@@ -13,6 +13,7 @@ export const menuItems =(item)=>{
             break;
 
         case 'Sides':
+            render([])
             break;
         
         case 'Drinks':
@@ -70,7 +71,9 @@ export const menuItems =(item)=>{
         if(item.constructor.name === 'Meal'){
             const foodIngredients = document.createElement('p')
             foodIngredients.textContent = item.getIngredients();
+            foodIngredients.classList.add('card-ingredients')
             itemDiv.appendChild(foodIngredients);
+    
         }
         
         itemDiv.appendChild(price);

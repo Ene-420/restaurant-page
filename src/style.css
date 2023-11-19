@@ -26,23 +26,31 @@ body{
 }
 
 .home{
+    margin: 15px auto;
+    width: 90%;
     font-family: my-cool-font;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* align-content: center;
+    flex-flow: column wrap; */
     
 }
 .home h1{
-    font-size: 5vw;
+    font-size: 4vw;
+    font-weight: 200;
 }
 .home *{
     font-family: my-cool-font;
     padding: 8px;
-    font-size: 3vw;
+    font-size: 2.5vw;
 }
 .home-logo{
     width: 80%;
     height: 50%;
+    /* background: url('../media/logo.jpg'); */
 }
 
 .logo{
@@ -125,8 +133,8 @@ nav button:hover, .active{
     height: 90%;
     background-color: white;
     display: grid;
-    grid-template-rows: repeat(auto-fit,1fr);
-    grid-template-columns: repeat(auto-fit,450px);
+    /* grid-template-rows: repeat(auto-fit,1fr); */
+    grid-template-columns: repeat(auto-fit,400px);
     gap: 8px;
     justify-content: center;
     align-items: center;
@@ -138,25 +146,31 @@ nav button:hover, .active{
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 70%;
+    height: 60%;
     align-items: center;
     align-content: center;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    /* flex-wrap: wrap; */
+    justify-content: center;
     padding: 8px;
-    font-size: 1.5vw;
+    font-size: 1.2em;
     border: 5px solid green;
     border-radius: 15px;
 
 }
 
+.card-ingredients{
+    display: none;
+}
+.card:hover .card-ingredients{
+    display: block;
+}
 .card button, .submit-order-btn{
     padding: 10px 12px;
     border-radius: 25px;
     background-color: green;
     color: white;
     border: 0;
-    font-size: 2vw;
+    font-size: 1.5em;
     font-weight: 900;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -207,6 +221,7 @@ form{
 .optional div, .additional div{
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 form input[type= 'number']{

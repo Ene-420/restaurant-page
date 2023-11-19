@@ -1,4 +1,5 @@
 import { clearScreen } from "../functions/bodyContent";
+import logo from '../media/logo.jpg';
 
 export const home =()=>{
     const contentBody = document.querySelector('.content-body');
@@ -11,7 +12,8 @@ export const home =()=>{
 
         const headerImg = document.createElement('img');
 
-        headerImg.setAttribute('src', '../media/logo.jpg')
+        
+        headerImg.setAttribute('src', logo)
 
         headerImg.classList.add('home-logo')
         const header = document.createElement('h1');
