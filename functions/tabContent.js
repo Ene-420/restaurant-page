@@ -1,3 +1,4 @@
+import logo from '../media/logo.jpg'
 export const render = () =>{
     const array =['Home', 'Menu', 'Contact']
     const head = document.querySelector('#head');
@@ -8,7 +9,7 @@ export const render = () =>{
     const logoText = document.createElement('p');
 
     logoText.textContent = 'Belle Full';
-    logoImg.setAttribute('src', '../media/logo.jpg');
+    logoImg.setAttribute('src', logo);
     logoImg.classList.add('logo-img');
 
     div.classList.add('logo');

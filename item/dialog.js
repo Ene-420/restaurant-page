@@ -1,3 +1,4 @@
+import xMark from '../media/circle-xmark-regular.svg';
 export const dialogMenu =(item)=>{
 
 
@@ -7,6 +8,7 @@ export const dialogMenu =(item)=>{
     const formDiv  = document.querySelectorAll('form>div');
     const additionalDiv = document.querySelector('.additional');
     const optionalDiv = document.querySelector('.optional');
+    const dialogHeader = document.querySelector('.form-dialog-header')
     //const closeBtn = document.querySelector('.close-button');
     
     if(dialog){
@@ -31,7 +33,7 @@ export const dialogMenu =(item)=>{
     });
 
     function updateDialog(item){
-
+        dialogHeader.textContent = item.getName()
         if(additionalDiv.hasChildNodes()){
             additionalDiv.replaceChildren()
            
@@ -71,21 +73,25 @@ export const dialogMenu =(item)=>{
         const div  = document.createElement('div');
         const closeBtn = document.createElement('button');
         const closeImg = document.createElement('img');
-        
-        closeImg.setAttribute('src', '../media/circle-xmark-regular.svg')
+        const header = document.createElement('h2')
+        header.classList.add('form-dialog-header')
+        header.textContent = item.getName();
+
+        closeImg.setAttribute('src', xMark)
         closeImg.classList.add('close-img');
         closeBtn.classList.add('close-button')
         closeBtn.appendChild(closeImg);
-       
+        
+        div.appendChild(header)
         div.appendChild(closeBtn);
-
+        div.classList.add('dialog-head')
         dialog.appendChild(div);
 
 
     
         if(item.getAdditionalServings()){
             const label = document.createElement('label');
-            label.textContent = 'Select Side';
+            label.textContent = 'Choose Side';
             const additional = document.createElement('div');
             additional.classList.add('additional');
             form.appendChild(label);
@@ -95,7 +101,7 @@ export const dialogMenu =(item)=>{
             form.appendChild(additional)
             if(item.getOptionalServings()){
                 const label = document.createElement('label');
-                label.textContent = 'Select Complementary Side';
+                label.textContent = 'Choose More Side';
                 const optional = document.createElement('div');
                 optional.classList.add('optional');
                 form.appendChild(label);
@@ -105,10 +111,11 @@ export const dialogMenu =(item)=>{
                 form.appendChild(optional)               
             }            
         }
-        const buttonDiv= document.createElement('div');
-        const SubmitBtn  = document.createElement('button');
+        const buttonDiv = document.createElement('div');
+        const SubmitBtn = document.createElement('button');
         SubmitBtn.classList.add('submit-order-btn');
         SubmitBtn.textContent = 'Submit Order'
+        buttonDiv.classList.add('submit-btn-div')
         buttonDiv.appendChild(SubmitBtn)
         form.appendChild(buttonDiv);
 

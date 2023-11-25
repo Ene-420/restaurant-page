@@ -186,11 +186,12 @@ nav button:hover, .active{
 }
 
 dialog{
-    width: fit-content;
+    width: 25%;
+    margin: 0 auto;
     height: fit-content;
     display:flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: stretch; */
     justify-content: center; 
     display: none;
     position: absolute;
@@ -200,12 +201,12 @@ dialog{
 
 
 form{
-    margin: 10px auto;
+    /* margin: 10px auto; */
     display: flex;
     padding: 10px;
     justify-content: space-evenly;
     flex-direction: column;
-    width: fit-content;
+    width: 90%;
     height: 90%;
     gap: 5px;
 }
@@ -233,22 +234,34 @@ form input[type= 'number']{
     margin-left: auto;
 }
 form > label{
-    font-size: 2vw;
+    font-size: 1.75em;
     font-weight: 800;
 }
 
-form> div>label{
-    font-size: 1.75vw;
+.optional div>label, .additional div>label{
+    font-size: 1.5em;
 }
+
+.submit-btn-div{
+    display: flex;
+    justify-self: center;
+}
+
 .submit-order-btn{
-    margin: 10px 0;
-    font-size: 2vw;
+    margin: 10px auto;
+    font-size: 2em;
 }
 
-dialog > div{
-    margin-left: auto;
+.dialog-head{
+    display: flex;
+    width: 100%;
 }
 
+.form-dialog-header{
+    flex: 1;
+    font-size: 2em;
+    margin-left: 5px;
+}
 .close-img{
     width: 20px;
     height: 20px;
@@ -258,7 +271,7 @@ dialog > div{
 .close-button{
     background: none;
     border: none;
-    margin-left:auto;
+    /* margin-left:auto; */
 }
 
 .contact{
